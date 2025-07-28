@@ -31,11 +31,13 @@ restore_file() {
     local backup_pattern="$2"
     
     # Find the most recent backup
-    local backup_file=$(ls -t "$BACKUP_DIR"/"$backup_pattern"* 2>/dev/null | head -1)
+    local backup_file
+    backup_file=$(ls -t "$BACKUP_DIR"/"$backup_pattern"* 2>/dev/null | head -1)
     
     if [ -n "$backup_file" ] && [ -f "$backup_file" ]; then
         # Create temporary copy for validation
-        local temp_file="/tmp/restore_temp_$(basename "$target_file")_$(date +%s)"
+        local temp_file
+        temp_file="/tmp/restore_temp_$(basename "$target_file")_$(date +%s)"
         if cp "$backup_file" "$temp_file"; then
             # Validate the backup file
             if [ -s "$temp_file" ]; then
@@ -66,7 +68,8 @@ restore_file() {
 # Function to check package dependencies before removal
 check_package_dependencies() {
     local package="$1"
-    local dependents=$(apt-cache rdepends --installed "$package" 2>/dev/null | grep -v "Reverse Depends:" | head -5)
+    local dependents
+    dependents=$(apt-cache rdepends --installed "$package" 2>/dev/null | grep -v "Reverse Depends:" | head -5)
     
     if [ -n "$dependents" ]; then
         echo -e "${YELLOW}⚠ Warning: The following packages depend on $package:${NC}"
@@ -83,7 +86,8 @@ check_package_dependencies() {
 
 # Function to get original swappiness value
 get_original_swappiness() {
-    local swappiness_file=$(ls -t "$BACKUP_DIR"/swappiness_original_* 2>/dev/null | head -1)
+    local swappiness_file
+    swappiness_file=$(ls -t "$BACKUP_DIR"/swappiness_original_* 2>/dev/null | head -1)
     if [ -f "$swappiness_file" ]; then
         grep "Original swappiness was:" "$swappiness_file" | cut -d: -f2 | xargs
     else
