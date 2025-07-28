@@ -38,7 +38,7 @@ create_backup_dir() {
 backup_file() {
     local file="$1"
     if [ -f "$file" ]; then
-        local backup_path="$BACKUP_DIR/$(basename $file)_$TIMESTAMP"
+        local backup_path="$BACKUP_DIR/$(basename "$file")_$TIMESTAMP"
         if cp "$file" "$backup_path" && [ -f "$backup_path" ]; then
             echo -e "${GREEN}✓ Backed up: $file${NC}"
             return 0
