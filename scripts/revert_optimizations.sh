@@ -31,11 +31,11 @@ restore_file() {
     local backup_pattern="$2"
     
     # Find the most recent backup
-    local backup_file=$(ls -t "$BACKUP_DIR"/$backup_pattern* 2>/dev/null | head -1)
+    local backup_file=$(ls -t "$BACKUP_DIR"/"$backup_pattern"* 2>/dev/null | head -1)
     
     if [ -n "$backup_file" ] && [ -f "$backup_file" ]; then
         # Create temporary copy for validation
-        local temp_file="/tmp/restore_temp_$(basename $target_file)_$(date +%s)"
+        local temp_file="/tmp/restore_temp_$(basename "$target_file")_$(date +%s)"
         if cp "$backup_file" "$temp_file"; then
             # Validate the backup file
             if [ -s "$temp_file" ]; then
@@ -115,7 +115,7 @@ if confirm "Reset swappiness to default?"; then
     echo "Resetting swappiness..."
     
     # Get the original swappiness value
-    local original_swappiness=$(get_original_swappiness)
+    original_swappiness=$(get_original_swappiness)
     echo "Restoring swappiness to original value: $original_swappiness"
     
     if restore_file /etc/sysctl.conf sysctl.conf; then
@@ -131,7 +131,7 @@ if confirm "Reset swappiness to default?"; then
         sudo sed -i '/vm.swappiness/d' /etc/sysctl.conf
         if echo "$original_swappiness" | sudo tee /proc/sys/vm/swappiness > /dev/null; then
             # Verify the setting was applied
-            local current_swappiness=$(cat /proc/sys/vm/swappiness)
+            current_swappiness=$(cat /proc/sys/vm/swappiness)
             if [ "$current_swappiness" = "$original_swappiness" ]; then
                 echo -e "${GREEN}✓ Swappiness reset to $original_swappiness${NC}"
             else
@@ -185,9 +185,9 @@ if confirm "Reset CPU governor to original settings?"; then
     sudo systemctl daemon-reload
     
     # Try to restore original governor settings
-    local governor_backup=$(ls -t "$BACKUP_DIR"/cpu_governors_* 2>/dev/null | head -1)
-    local cpu_count=0
-    local success_count=0
+    governor_backup=$(ls -t "$BACKUP_DIR"/cpu_governors_* 2>/dev/null | head -1)
+    cpu_count=0
+    success_count=0
     
     if [ -f "$governor_backup" ]; then
         echo "Restoring original CPU governor settings..."
@@ -195,7 +195,7 @@ if confirm "Reset CPU governor to original settings?"; then
             if [ -f "$cpu_path" ]; then
                 cpu_count=$((cpu_count + 1))
                 if echo "$original_governor" | sudo tee "$cpu_path" > /dev/null 2>&1; then
-                    if [ "$(cat $cpu_path)" = "$original_governor" ]; then
+                    if [ "$(cat "$cpu_path")" = "$original_governor" ]; then
                         success_count=$((success_count + 1))
                     fi
                 fi
@@ -207,13 +207,13 @@ if confirm "Reset CPU governor to original settings?"; then
         for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
             if [ -f "$cpu" ]; then
                 cpu_count=$((cpu_count + 1))
-                local target_governor="powersave"
+                target_governor="powersave"
                 if grep -q "ondemand" /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors 2>/dev/null; then
                     target_governor="ondemand"
                 fi
                 
                 if echo "$target_governor" | sudo tee "$cpu" > /dev/null 2>&1; then
-                    if [ "$(cat $cpu)" = "$target_governor" ]; then
+                    if [ "$(cat "$cpu")" = "$target_governor" ]; then
                         success_count=$((success_count + 1))
                     fi
                 fi
@@ -244,7 +244,7 @@ if confirm "Remove Intel GPU kernel parameters from GRUB?"; then
         echo "No backup found, manually removing parameters..."
         
         # Create temporary file for safe editing
-        local temp_grub="/tmp/grub_revert_temp_$(date +%s)"
+        temp_grub="/tmp/grub_revert_temp_$(date +%s)"
         cp /etc/default/grub "$temp_grub"
         
         # Remove i915.enable_guc parameter
@@ -301,7 +301,7 @@ echo -e "\n${GREEN}=== Revert Summary ===${NC}"
 echo "✓ TRIM service: $(systemctl is-enabled fstrim.timer 2>/dev/null || echo 'disabled')"
 echo "✓ Swappiness: $(cat /proc/sys/vm/swappiness)"
 echo "✓ CPU Governor: $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || echo 'unknown')"
-echo "✓ Intel media driver: $(dpkg -l | grep intel-media-va-driver | wc -l | sed 's/0/removed/;s/[^0]/still installed/')"
+echo "✓ Intel media driver: $(dpkg -l | grep -c intel-media-va-driver | sed 's/0/removed/;s/[^0]/still installed/')"
 
 # Option to remove backup directory
 if confirm "Remove backup directory ($BACKUP_DIR)?"; then

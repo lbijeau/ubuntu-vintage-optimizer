@@ -155,7 +155,7 @@ if confirm "Set CPU governor to performance mode?"; then
     echo "# CPU Governor backup - $(date)" > "$BACKUP_DIR/cpu_governors_$TIMESTAMP"
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
         if [ -f "$cpu" ]; then
-            echo "$cpu:$(cat $cpu)" >> "$BACKUP_DIR/cpu_governors_$TIMESTAMP"
+            echo "$cpu:$(cat "$cpu")" >> "$BACKUP_DIR/cpu_governors_$TIMESTAMP"
         fi
     done
     
@@ -166,14 +166,14 @@ if confirm "Set CPU governor to performance mode?"; then
     fi
     
     # Set all CPUs to performance with error checking
-    local cpu_count=0
-    local success_count=0
+    cpu_count=0
+    success_count=0
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
         if [ -f "$cpu" ]; then
             cpu_count=$((cpu_count + 1))
             if echo performance | sudo tee "$cpu" > /dev/null 2>&1; then
                 # Verify the setting was applied
-                if [ "$(cat $cpu)" = "performance" ]; then
+                if [ "$(cat "$cpu")" = "performance" ]; then
                     success_count=$((success_count + 1))
                 fi
             fi
@@ -219,11 +219,10 @@ if confirm "Add Intel GPU optimization kernel parameters (i915.enable_guc=2)?"; 
         # Validate GRUB file before modification
         if ! grep -q "^GRUB_" /etc/default/grub; then
             echo -e "${RED}✗ Invalid GRUB configuration file${NC}"
-            continue
-        fi
+        else
         
         # Create a temporary file for safe editing
-        local temp_grub="/tmp/grub_temp_$TIMESTAMP"
+        temp_grub="/tmp/grub_temp_$TIMESTAMP"
         cp /etc/default/grub "$temp_grub"
         
         # Remove existing i915.enable_guc parameter if present
@@ -252,7 +251,7 @@ if confirm "Add Intel GPU optimization kernel parameters (i915.enable_guc=2)?"; 
             else
                 echo -e "${RED}✗ Failed to update GRUB - restoring backup${NC}"
                 # Restore backup on failure
-                local backup_grub=$(ls -t "$BACKUP_DIR"/grub_* 2>/dev/null | head -1)
+                backup_grub=$(ls -t "$BACKUP_DIR"/grub_* 2>/dev/null | head -1)
                 if [ -n "$backup_grub" ]; then
                     sudo cp "$backup_grub" /etc/default/grub
                     sudo update-grub
@@ -261,6 +260,7 @@ if confirm "Add Intel GPU optimization kernel parameters (i915.enable_guc=2)?"; 
         else
             echo -e "${RED}✗ GRUB modification validation failed${NC}"
             rm -f "$temp_grub"
+        fi
         fi
     else
         echo -e "${RED}✗ Failed to backup GRUB configuration, skipping${NC}"
@@ -285,7 +285,7 @@ echo -e "\n${GREEN}=== Optimization Summary ===${NC}"
 echo "✓ TRIM service: $(systemctl is-enabled fstrim.timer 2>/dev/null || echo 'disabled')"
 echo "✓ Swappiness: $(cat /proc/sys/vm/swappiness)"
 echo "✓ CPU Governor: $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null || echo 'unknown')"
-echo "✓ Intel media driver: $(dpkg -l | grep intel-media-va-driver | wc -l | sed 's/0/not installed/;s/[^0]/installed/')"
+echo "✓ Intel media driver: $(dpkg -l | grep -c intel-media-va-driver | sed 's/0/not installed/;s/[^0]/installed/')"
 
 echo -e "\n${GREEN}Optimization complete!${NC}"
 echo -e "${YELLOW}Note: Some optimizations require a reboot to take full effect.${NC}"
