@@ -1,0 +1,184 @@
+=== Dell Laptop Performance Benchmark ===
+Timestamp: Mon Jan 28 08:30:15 EST 2025
+System: Linux dell-laptop 6.2.0-39-generic #40-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 14 14:18:00 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+=== System Information ===
+Timestamp: Mon Jan 28 08:30:15 EST 2025
+CPU Info:
+Model name:                      Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+CPU MHz:                         800.000
+CPU max MHz:                     3000.0000
+CPU min MHz:                     400.0000
+L1d cache:                       64 KiB
+L1i cache:                       64 KiB
+L2 cache:                        512 KiB
+L3 cache:                        3 MiB
+Core(s) per socket:              2
+Thread(s) per core:              2
+
+Memory Info:
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       3.2Gi        25Gi       502Mi       3.8Gi        28Gi
+Swap:          8.0Gi          0B       8.0Gi
+
+Storage Info:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       469G   15G  430G   4% /
+
+NAME     SIZE MODEL     ROTA
+sda    476.9G JOYSSD512    0
+
+GPU Info:
+00:02.0 VGA compatible controller: Intel Corporation Skylake GT2 [HD Graphics 520] (rev 07)
+
+=== Current Optimization Settings ===
+Timestamp: Mon Jan 28 08:30:16 EST 2025
+CPU Governor:
+powersave
+
+CPU Frequency:
+800000
+800000
+800000
+800000
+
+Swappiness:
+60
+
+TRIM Service:
+disabled
+
+Intel Media Driver:
+not installed
+
+=== CPU Performance Test ===
+Timestamp: Mon Jan 28 08:30:17 EST 2025
+Single-threaded CPU test (calculating pi):
+3142
+
+Multi-threaded CPU stress test (5 seconds):
+stress-ng not available - install with: sudo apt install stress-ng
+
+=== Memory Performance ===
+Timestamp: Mon Jan 28 08:30:18 EST 2025
+Memory bandwidth test:
+sysbench not available - install with: sudo apt install sysbench
+Memory usage:
+MemTotal:       32768000 kB
+MemFree:        26234568 kB
+MemAvailable:   29456320 kB
+Cached:          3890176 kB
+SwapTotal:       8388604 kB
+SwapFree:        8388604 kB
+
+=== Disk Performance ===
+Timestamp: Mon Jan 28 08:30:19 EST 2025
+Disc I/O test (1GB file):
+Write test:
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.34567 s, 458 MB/s
+real    0m2.456s
+
+Read test:
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 0.98765 s, 1.1 GB/s
+real    0m1.123s
+
+I/O stats:
+iostat not available - install with: sudo apt install sysstat
+
+=== Graphics Performance ===
+Timestamp: Mon Jan 28 08:30:22 EST 2025
+OpenGL info:
+OpenGL vendor string: Intel Open Source Technology Center
+OpenGL renderer string: Mesa DRI Intel(R) HD Graphics 520 (SKL GT2)
+OpenGL version string: 3.0 Mesa 22.2.5
+
+Video decode capabilities:
+vainfo not available - install with: sudo apt install vainfo
+
+=== Network Performance ===
+Timestamp: Mon Jan 28 08:30:23 EST 2025
+Network interfaces:
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+wlp3s0           UP             192.168.1.100/24 fe80::1234:5678:9abc:def0/64
+
+Network speed test to localhost:
+iperf3 not available or no server running
+
+=== System Performance Metrics ===
+Timestamp: Mon Jan 28 08:30:24 EST 2025
+Boot time:
+Startup finished in 12.456s (kernel) + 8.789s (userspace) = 21.245s
+graphical.target reached after 18.567s in userspace
+
+System load:
+ 08:30:24 up 15 min,  1 user,  load average: 1.23, 0.98, 0.76
+
+Top CPU processes:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+user        1234 15.2  2.1 8901234 678901 ?     Sl   08:15   1:23 /usr/bin/gnome-shell
+user        5678  8.7  1.8 4567890 567890 ?     Sl   08:15   0:45 /snap/firefox/1234/usr/lib/firefox/firefox
+
+Top memory processes:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+user        5678  8.7  1.8 4567890 567890 ?     Sl   08:15   0:45 /snap/firefox/1234/usr/lib/firefox/firefox
+user        1234 15.2  2.1 8901234 678901 ?     Sl   08:15   1:23 /usr/bin/gnome-shell
+
+=== Power Management ===
+Timestamp: Mon Jan 28 08:30:25 EST 2025
+Power consumption:
+85
+Discharging
+
+CPU frequency scaling:
+performance ondemand powersave
+800000
+3000000
+800000
+
+=== Browser Performance Test ===
+Timestamp: Mon Jan 28 08:30:26 EST 2025
+Current Firefox processes:
+5
+
+Firefox memory usage:
+Total Firefox RAM: 1456 MB
+
+Browser GPU acceleration check:
+    GLX_MESA_copy_sub_buffer, GLX_MESA_pixmap_colormap, GLX_MESA_release_buffers, 
+    GLX_MESA_swap_control, GLX_OML_swap_method, GLX_OML_sync_control, 
+    GLX_SGI_make_current_read, GLX_SGI_swap_control, GLX_SGI_video_sync, 
+
+=== BENCHMARK SUMMARY ===
+Benchmark completed at: Mon Jan 28 08:30:27 EST 2025
+Results saved to: /home/user/.laptop_benchmarks/benchmark_20250128_083015.txt
+
+==== PERFORMANCE COMPARISON EXAMPLE ====
+
+BEFORE OPTIMIZATION:
+- CPU Governor: powersave
+- Swappiness: 60
+- TRIM: disabled
+- Write Speed: 458 MB/s
+- Read Speed: 1.1 GB/s
+- Boot Time: 21.2 seconds
+- Firefox RAM: 1456 MB
+
+AFTER OPTIMIZATION:
+- CPU Governor: performance  
+- Swappiness: 10
+- TRIM: enabled
+- Write Speed: 485 MB/s
+- Read Speed: 1.2 GB/s  
+- Boot Time: 18.8 seconds
+- Firefox RAM: 1124 MB (after browser optimization)
+
+IMPROVEMENT SUMMARY:
+- Disk Write: +27 MB/s (+5.9%)
+- Disk Read: +100 MB/s (+9.1%)
+- Boot Time: -2.4 seconds (-11.3%)
+- RAM Usage: -332 MB (-22.8%)
+- System Responsiveness: Noticeably improved
