@@ -173,16 +173,61 @@ shellcheck scripts/*.sh
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Disclaimer
+## ⚠️ IMPORTANT DISCLAIMER AND RISK NOTICE
 
-⚠️ **Important:** While these scripts are designed to be safe and reversible, system modifications always carry some risk. Please:
+**SYSTEM MODIFICATION SOFTWARE - USE AT YOUR OWN RISK**
 
-- Run the benchmark script first to establish a baseline
-- Test on a non-critical system first
-- Ensure you have system backups
-- Review the script contents before running
+This software modifies critical system files, kernel parameters, and system services. While designed with safety mechanisms, **ALL SYSTEM MODIFICATIONS CARRY INHERENT RISKS** including but not limited to:
 
-The authors are not responsible for any system damage or data loss.
+- **System instability or failure to boot**
+- **Hardware damage from improper configurations**  
+- **Data loss or corruption**
+- **Voided hardware warranties**
+- **Security vulnerabilities**
+- **Incompatibility with future system updates**
+
+### MANDATORY SAFETY REQUIREMENTS
+
+**YOU MUST** complete ALL of the following before using this software:
+
+- [ ] **Create complete system backup** (not just files - full system image)
+- [ ] **Test on non-production system** first
+- [ ] **Verify hardware compatibility** with supported systems list
+- [ ] **Read and understand all code** before execution
+- [ ] **Have recovery media available** (Ubuntu installation USB/DVD)
+- [ ] **Ensure stable power supply** during modifications
+- [ ] **Close all important applications** and save work
+
+### LEGAL DISCLAIMER
+
+**NO WARRANTY - NO LIABILITY**
+
+This software is provided "AS IS" without warranty of any kind. The developers, contributors, and distributors:
+
+- **DISCLAIM ALL WARRANTIES** express or implied, including merchantability and fitness for purpose
+- **ASSUME NO RESPONSIBILITY** for any damage, data loss, system failure, or consequential damages
+- **SHALL NOT BE LIABLE** for any direct, indirect, incidental, special, or consequential damages
+- **PROVIDE NO SUPPORT GUARANTEES** for system recovery or problem resolution
+
+### YOUR RESPONSIBILITY
+
+By using this software, **YOU ACKNOWLEDGE AND AGREE** that:
+
+- You are solely responsible for any consequences of its use
+- You have adequate technical knowledge to understand the risks
+- You will not hold developers liable for any problems or damages
+- You understand this may void hardware or software warranties
+- You use this software entirely at your own risk and discretion
+
+### RECOMMENDED ALTERNATIVES
+
+Consider these safer alternatives:
+- Professional system optimization services
+- Manufacturer-provided optimization tools  
+- Ubuntu's built-in performance settings
+- Manual configuration changes (one at a time)
+
+**If you do not agree to these terms or cannot accept these risks, DO NOT USE THIS SOFTWARE.**
 
 ## Changelog
 
