@@ -1,16 +1,16 @@
-# Laptop Optimizer
+# Ubuntu Vintage Optimizer
 
-A collection of safe, interactive scripts to optimize older Dell laptops running Linux for better performance.
+A collection of safe, interactive scripts to optimize older Ubuntu systems and laptops for better performance.
 
-[![shellcheck](https://github.com/yourusername/laptop-optimizer/workflows/shellcheck/badge.svg)](https://github.com/yourusername/laptop-optimizer/actions)
+[![shellcheck](https://github.com/yourusername/ubuntu-vintage-optimizer/workflows/shellcheck/badge.svg)](https://github.com/yourusername/ubuntu-vintage-optimizer/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
-This toolkit provides three main scripts to help optimize your older Dell laptop's performance:
+This toolkit provides three main scripts to help optimize your older Ubuntu system's performance:
 
 - **📊 Performance Benchmark** - Capture baseline metrics before/after optimization
-- **⚡ Laptop Optimizer** - Apply safe performance optimizations with confirmations
+- **⚡ System Optimizer** - Apply safe performance optimizations with confirmations
 - **🔄 Revert Optimizations** - Safely undo all changes with backup restoration
 
 ## Features
@@ -18,15 +18,15 @@ This toolkit provides three main scripts to help optimize your older Dell laptop
 - ✅ **Safe & Reversible** - All changes are backed up and can be undone
 - ✅ **Interactive** - Confirmation prompts for each optimization step
 - ✅ **Comprehensive** - CPU, memory, storage, and graphics optimizations
-- ✅ **Well-Tested** - Designed for older Dell laptops (2015-2018 era)
+- ✅ **Well-Tested** - Designed for older Ubuntu systems and laptops (2015-2018 era)
 - ✅ **Documented** - Clear progress reporting and error handling
 
 ## Quick Start
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/laptop-optimizer.git
-   cd laptop-optimizer
+   git clone https://github.com/yourusername/ubuntu-vintage-optimizer.git
+   cd ubuntu-vintage-optimizer
    ```
 
 2. **Make scripts executable:**
@@ -65,14 +65,15 @@ This toolkit provides three main scripts to help optimize your older Dell laptop
 
 **Tested On:**
 - Dell Latitude series (E7450, E7470, etc.)
-- Intel 6th generation CPUs (Skylake)
+- Lenovo ThinkPad series (T460, T470, etc.)
+- Intel 6th generation CPUs (Skylake) and newer
 - 16GB+ RAM configurations
 - Intel HD Graphics 520/530
 
 **Should Work On:**
-- Most Dell laptops from 2015-2018
+- Most laptops from 2015-2018 era
 - Intel integrated graphics systems
-- Ubuntu/Debian-based distributions
+- Ubuntu 18.04+ and derivative distributions
 
 ## Prerequisites
 
@@ -190,8 +191,8 @@ See [CHANGELOG.md](CHANGELOG.md) for version history and changes.
 ---
 
 **Tested Environment:**
-- Dell Latitude E7450
-- Intel i5-6300U CPU
-- 32GB RAM, 512GB SSD
-- Ubuntu 22.04+ / Linux Kernel 6.x
-- Intel HD Graphics 520
+- Dell Latitude E7450 & Lenovo ThinkPad T460
+- Intel i5-6300U CPU and similar
+- 16-32GB RAM, 256-512GB SSD
+- Ubuntu 20.04+ / Linux Kernel 5.x+
+- Intel HD Graphics 520/530

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the Laptop Optimizer project will be documented in this file.
+All notable changes to the Ubuntu Vintage Optimizer project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -8,12 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-01-28
 
 ### Added
-- Initial release of laptop optimization toolkit
+- Initial release of Ubuntu vintage system optimization toolkit
 - `optimize_laptop.sh` - Interactive system optimization script
 - `revert_optimizations.sh` - Safe reversal of all optimizations
 - `performance_benchmark.sh` - Comprehensive performance testing
 - Comprehensive backup and restore functionality
-- Support for Dell laptops with Intel 6th generation CPUs
+- Support for older Ubuntu systems with Intel 6th generation CPUs and newer
 - MIT License for open source distribution
 
 ### Features
@@ -45,22 +45,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License for permissive usage
 
 ### Tested On
-- Dell Latitude E7450
-- Intel i5-6300U CPU @ 2.40GHz
-- 32GB RAM, 512GB SSD
-- Intel HD Graphics 520
-- Ubuntu 22.04+ / Linux Kernel 6.x
+- Dell Latitude E7450 & Lenovo ThinkPad T460
+- Intel i5-6300U CPU @ 2.40GHz and similar
+- 16-32GB RAM, 256-512GB SSD
+- Intel HD Graphics 520/530
+- Ubuntu 20.04+ / Linux Kernel 5.x+
 
 ---
 
 ## [Unreleased]
 
 ### Planned Features
-- Additional laptop manufacturer support (Lenovo, HP)
+- Extended laptop manufacturer support (HP, ASUS, Acer)
 - AMD CPU optimization support
-- Advanced thermal management
+- Advanced thermal management for vintage systems
 - Automated update checking
 - GUI version for non-technical users
+- Support for Ubuntu LTS versions back to 16.04
 
 ---
 
