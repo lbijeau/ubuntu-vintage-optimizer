@@ -7,8 +7,9 @@ A collection of safe, interactive scripts to optimize older Ubuntu systems and l
 
 ## Overview
 
-This toolkit provides three main scripts to help optimize your older Ubuntu system's performance:
+This toolkit provides four main scripts to help optimize your older Ubuntu system's performance:
 
+- **🚀 All-in-One Optimizer** - Automated benchmark → optimize → compare workflow with MD report
 - **📊 Performance Benchmark** - Capture baseline metrics before/after optimization
 - **⚡ System Optimizer** - Apply safe performance optimizations with confirmations
 - **🔄 Revert Optimizations** - Safely undo all changes with backup restoration
@@ -22,6 +23,23 @@ This toolkit provides three main scripts to help optimize your older Ubuntu syst
 - ✅ **Documented** - Clear progress reporting and error handling
 
 ## Quick Start
+
+### Option 1: All-in-One (Recommended)
+
+1. **Clone and run the automated workflow:**
+   ```bash
+   git clone https://github.com/yourusername/ubuntu-vintage-optimizer.git
+   cd ubuntu-vintage-optimizer
+   chmod +x scripts/*.sh
+   ./scripts/optimize_and_compare.sh
+   ```
+   This will automatically:
+   - Run baseline benchmark
+   - Apply optimizations (with confirmations)
+   - Run post-optimization benchmark  
+   - Generate detailed Markdown comparison report
+
+### Option 2: Manual Steps
 
 1. **Clone the repository:**
    ```bash
@@ -83,7 +101,22 @@ This toolkit provides three main scripts to help optimize your older Ubuntu syst
 
 ## Usage Examples
 
-### Basic Usage
+### All-in-One Workflow (Recommended)
+```bash
+# Complete optimization workflow with report
+./scripts/optimize_and_compare.sh
+
+# This will:
+# 1. Run baseline benchmark
+# 2. Apply optimizations (with prompts)
+# 3. Run post-optimization benchmark
+# 4. Generate detailed Markdown report
+# 
+# Reports saved to: ~/.laptop_reports/
+# Raw benchmarks: ~/.laptop_benchmarks/
+```
+
+### Manual Usage
 ```bash
 # Run all optimizations with prompts
 ./scripts/optimize_laptop.sh
@@ -125,6 +158,7 @@ The optimizer will ask for confirmation at each step:
 
 - **Backups:** `~/.laptop_optimization_backups/`
 - **Benchmarks:** `~/.laptop_benchmarks/`
+- **Reports:** `~/.laptop_reports/` (Markdown comparison reports)
 - **System Files Modified:**
   - `/etc/sysctl.conf` (swappiness)
   - `/etc/default/grub` (GPU parameters)
