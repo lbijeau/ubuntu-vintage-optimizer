@@ -2,6 +2,9 @@
 .laptop_optimization_backups/
 .laptop_benchmarks/
 
+# AI development artifacts are tracked
+# .ai/ directory is intentionally version controlled
+
 # Temporary files
 *.tmp
 *.temp
